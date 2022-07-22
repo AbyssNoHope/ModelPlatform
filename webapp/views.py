@@ -10,15 +10,21 @@ from webapp.serializer import SpanSerializer
 
 
 class DataProcessView(MPView):
-    def get_complete_trace(self, request):
+    def gen_csv(self, request):
         '''
-        Get complete traces
+        generate modified data file
         '''
         response_data = ResponseData()
         try:
             filepath = self.check_and_get(
                 request.data, 'filepath', response_data)
-            services.get_data_file(self, request.data, filepath, response_data)
+            services.get_complete_trace(
+                self, request.data, filepath, response_data)
+            filename = filepath.split('/')[-1]
+            after_merge_filename = filename + '-merge'
+            after_merge_path = filepath + '-merge'
+            services.change_trace(
+                self, request.data, after_merge_path, response_data)
         except ValidationError as err:
             response_data.data = err.detail
             response_data.status = HTTP_400_BAD_REQUEST
