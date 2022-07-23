@@ -3,7 +3,7 @@ from rest_framework.exceptions import ValidationError
 from webapp.views import MPView, ResponseData
 
 from .models import Span
-from .serializer import SpanSerializer
+from .serializers import SpanSerializer
 import os
 import csv
 import re
