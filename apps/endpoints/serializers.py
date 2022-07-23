@@ -1,12 +1,6 @@
 from rest_framework import serializers
 
-from .models import Span, Endpoint, MLAlgorithm, MLAlgorithmStatus, MLRequest
-
-
-class SpanSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Span
-        fields = '__all__'
+from .models import Endpoint, MLAlgorithm, MLAlgorithmStatus, MLRequest
 
 
 class EndpointSerializer(serializers.ModelSerializer):
