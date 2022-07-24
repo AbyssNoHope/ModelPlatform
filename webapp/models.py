@@ -17,3 +17,8 @@ class Span(models.Model):
 
     def __unicode__(self):
         return self.span_id
+
+class OnlineDetection(models.Model):
+    threshold = models.CharField(max_length=16)
+    
+    

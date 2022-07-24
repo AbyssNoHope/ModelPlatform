@@ -1,0 +1,1 @@
+python3 -m online_test.online_detection -i inputpath
